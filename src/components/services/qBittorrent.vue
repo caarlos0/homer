@@ -83,7 +83,9 @@ export default {
   methods: {
     fetchCount: async function () {
       try {
-        const body = await this.fetch("/api/v2/torrents/info");
+        const body = await this.fetch("/api/v2/torrents/info", {
+          credentials: 'include'
+        });
         this.error = false;
         this.count = body.length;
       } catch (e) {
@@ -93,7 +95,9 @@ export default {
     },
     getRate: async function () {
       try {
-        const body = await this.fetch("/api/v2/transfer/info");
+        const body = await this.fetch("/api/v2/transfer/info", {
+          credentials: 'include'
+        });
         this.error = false;
         this.dl = body.dl_info_speed;
         this.ul = body.up_info_speed;
